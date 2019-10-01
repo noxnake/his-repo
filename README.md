@@ -1,5 +1,5 @@
 # his-repo
-Repositorio HIS - Red Huamanga
+Repositorio HIS - Red Centro
 
 #Instalación
 
