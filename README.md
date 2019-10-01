@@ -1,5 +1,5 @@
 # his-repo
-Repositorio HIS - Red Centro
+Repositorio HIS - Red Ayacucho
 
 #Instalación
 
