@@ -1,19 +1,63 @@
-DROP DATABASE IF EXISTS HIS
+USE [HIS]
 GO
-CREATE DATABASE HIS
-GO
-USE HIS
-GO
-/****** Object:  Table [dbo].[HIS_COMPACTO]    Script Date: 2/09/2019 11:54:40 ******/
+/****** Object:  Table [dbo].[err]    Script Date: 1/10/2019 11:18:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[HIS_COMPACTO](
+/****** Object:  Table [dbo].[HIS_ATENCIONES]    Script Date: 1/10/2019 11:18:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[HIS_ATENCIONES](
+	[id_cita] [varchar](9) NOT NULL,
+	[AÃ±o] [varchar](4) NULL,
+	[Mes] [varchar](2) NULL,
+	[Dia] [varchar](2) NULL,
+	[Lote] [varchar](3) NULL,
+	[Num_pag] [varchar](3) NULL,
+	[Num_reg] [varchar](3) NULL,
+	[Servicio] [varchar](9) NULL,
+	[RENAES] [varchar](8) NULL,
+	[Tipo_Doc] [varchar](12) NULL,
+	[IDENTIFICADOR] [varchar](20) NULL,
+	[Nro_Doc] [varchar](15) NULL,
+	[FECHA_NAC] [varchar](12) NULL,
+	[Nro de HCL] [varchar](20) NULL,
+	[FichaFam] [varchar](12) NULL,
+	[Financiador] [varchar](20) NULL,
+	[Nro_Afiliacion] [varchar](20) NULL,
+	[Cond EESS] [varchar](1) NULL,
+	[Cond Serv] [varchar](1) NULL,
+	[Tipo Edad] [varchar](1) NULL,
+	[Edad Pac(AÃ±o)] [varchar](3) NULL,
+	[Edad Pac (Mes)] [varchar](2) NULL,
+	[Edad Pac (DÃ­a)] [varchar](2) NULL,
+	[Ubigeo] [varchar](6) NULL,
+	[Turno atenciÃ³n] [varchar](1) NULL,
+	[GÃ©nero] [varchar](1) NULL,
+	[Etnia] [varchar](3) NULL,
+	[NUM_DOC_ATIENDE] [varchar](8) NULL,
+	[NUM_DOC_REGISTRA] [varchar](8) NULL,
+	[FECHA_REGISTRO] [varchar](12) NULL,
+	[ULT_MODIFICACION] [varchar](12) NULL,
+ CONSTRAINT [PK_HIS_ATENCIONES] PRIMARY KEY CLUSTERED 
+(
+	[id_cita] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[HIS_ATENCIONES_DETALLE]    Script Date: 1/10/2019 11:18:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[HIS_ATENCIONES_DETALLE](
 	[id] [numeric](10, 0) IDENTITY(1,1) NOT NULL,
-	[año] [int] NULL,
+	[aÃ±o] [int] NULL,
 	[mes] [int] NULL,
-	[id_cita] [numeric](10, 0) NULL,
+	[id_cita] [varchar](9) NULL,
 	[codigo_item] [varchar](9) NULL,
 	[tipo_diagnostico] [varchar](1) NULL,
 	[valor_lab] [varchar](4) NULL,
@@ -23,7 +67,7 @@ CREATE TABLE [dbo].[HIS_COMPACTO](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HIS_CONSOLIDADO]    Script Date: 2/09/2019 11:54:40 ******/
+/****** Object:  Table [dbo].[HIS_CONSOLIDADO]    Script Date: 1/10/2019 11:18:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -63,7 +107,7 @@ CREATE TABLE [dbo].[HIS_CONSOLIDADO](
 	[cod_fina] [varchar](15) NULL,
 	[cod_etni] [varchar](3) NULL,
 	[cod_servsa] [varchar](15) NULL,
-	[AÑO] [int] NULL,
+	[AÃ‘O] [int] NULL,
 	[MES] [int] NULL,
 	[DIA] [int] NULL,
 	[dni_procesado] [varchar](8) NULL,
@@ -79,7 +123,7 @@ CREATE TABLE [dbo].[HIS_CONSOLIDADO](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HIS_MAESTRO_PERSONAL]    Script Date: 2/09/2019 11:54:40 ******/
+/****** Object:  Table [dbo].[HIS_MAESTRO_PERSONAL]    Script Date: 1/10/2019 11:18:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -95,14 +139,14 @@ CREATE TABLE [dbo].[HIS_MAESTRO_PERSONAL](
 	[fecha_baja] [date] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HIS_PLANO]    Script Date: 2/09/2019 11:54:40 ******/
+/****** Object:  Table [dbo].[HIS_PLANO]    Script Date: 1/10/2019 11:18:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[HIS_PLANO](
 	[id_cita] [varchar](10) NULL,
-	[Año] [varchar](50) NULL,
+	[AÃ±o] [varchar](50) NULL,
 	[Mes] [varchar](50) NULL,
 	[Dia] [varchar](50) NULL,
 	[Lote] [varchar](50) NULL,
@@ -128,13 +172,13 @@ CREATE TABLE [dbo].[HIS_PLANO](
 	[Cond EESS] [varchar](50) NULL,
 	[Cond Serv] [varchar](50) NULL,
 	[Tipo Edad] [varchar](50) NULL,
-	[Edad Pac(Año)] [varchar](50) NULL,
+	[Edad Pac(AÃ±o)] [varchar](50) NULL,
 	[Edad Pac (Mes)] [varchar](50) NULL,
-	[Edad Pac (Día)] [varchar](50) NULL,
+	[Edad Pac (DÃ­a)] [varchar](50) NULL,
 	[Ubigeo] [varchar](50) NULL,
 	[Domicilio] [varchar](50) NULL,
-	[Turno atención] [varchar](50) NULL,
-	[Género] [varchar](50) NULL,
+	[Turno atenciÃ³n] [varchar](50) NULL,
+	[GÃ©nero] [varchar](50) NULL,
 	[Etnia] [varchar](50) NULL,
 	[id_ciex1] [varchar](50) NULL,
 	[id_tipdiag1] [varchar](50) NULL,
@@ -170,7 +214,7 @@ CREATE TABLE [dbo].[HIS_PLANO](
 	[ICM] [varchar](50) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HIS1]    Script Date: 2/09/2019 11:54:40 ******/
+/****** Object:  Table [dbo].[HIS1]    Script Date: 1/10/2019 11:18:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -191,7 +235,7 @@ CREATE TABLE [dbo].[HIS1](
 	[st] [varchar](1) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HISA]    Script Date: 2/09/2019 11:54:40 ******/
+/****** Object:  Table [dbo].[HISA]    Script Date: 1/10/2019 11:18:50 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
